@@ -1,10 +1,9 @@
 # Leave-System
-- Tools = GO, MongoDB, Vue.js
-</br>
+- Tools = GO, MongoDB, Vue.js</br>
 
 ## ขั้นตอนการ Run project
 - npm run dev
-</br></br>
+</br></br></br></br>
 
 #### รายละเอียด
 - ลาพักร้อนได้ 6 วันต่อปี โดยมีสิทธิได้รับค่าจ้างปกติ
