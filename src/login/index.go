@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"html/template"
 	"log"
 	"os"
 	"os/signal"
@@ -18,13 +19,33 @@ import (
 func main() {
 	fmt.Println("Welcome to Server")
 
+	InitDB()
 	e := echo.New()
 	e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
-		if username == "postgres" || password == "2566" {
+		if username == "mongodb" || password == "2566" {
 			return true, nil
 		}
 		return false, nil
 	}))
+
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// login
+	// e.POST("/logins", CreateLoginsAllHandler)
+	// e.GET("/logins", GetLoginsHandler)
+	// e.GET("/logins/:id", GetLoginsIDHandler)
+	// e.PUT("/logins/:id", UpdateAllLoginsHandler)
+	// e.PATCH("/logins/:id", UpdateLoginsHandler)
+	// e.DELETE("/logins/:id", DeleteLoginsHandler)
+
+	// user
+	// e.POST("/users", CreateUsersAllHandler)
+	// e.GET("/users", GetUsersHandler)
+	// e.GET("/users/:id", GetUsersIDHandler)
+	// e.PUT("/users/:id", UpdateAllUsersHandler)
+	// e.PATCH("/users/:id", UpdateUsersHandler)
+	// e.DELETE("/users/:id", DeleteUsersHandler)
 
 	log.Fatal(e.Start(":2566"))
 
@@ -40,9 +61,11 @@ func main() {
 
 // close connection
 var db *sql.DB
+var tpl *template.Template
 
 // Get database url from environment variable, Create Table
 func InitDB() {
+	tpl, _ = template.ParseGlob("")
 	var err error
 	// connect to MongoDB
 	db, err := sql.Open("mongodb", os.Getenv("DATABASE_URL"))
@@ -52,20 +75,31 @@ func InitDB() {
 	}
 	defer db.Close()
 
-	createTb := `
-	CREATE TABLE IF NOT EXISTS employee (
+	createLogin := `
+	CREATE TABLE IF NOT EXISTS logins (
 		id SERIAL PRIMARY KEY,
 		title TEXT,
 		amount FLOAT,
 		note TEXT,
 		tags TEXT[] );
 	`
-	_, err = db.Exec(createTb)
-
+	_, err = db.Exec(createLogin)
 	if err != nil {
-		log.Fatal("can't create table", err)
+		log.Fatal("can't create table login", err)
 	}
 
+	createUser := `
+	CREATE TABLE IF NOT EXISTS users (
+		id SERIAL PRIMARY KEY,
+		title TEXT,
+		amount FLOAT,
+		note TEXT,
+		tags TEXT[] );
+	`
+	_, err = db.Exec(createUser)
+	if err != nil {
+		log.Fatal("can't create table user", err)
+	}
 }
 
 // ===========

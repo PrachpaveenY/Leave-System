@@ -1,13 +1,13 @@
 package main
 
-type User struct {
+type Login struct {
 	FirstName string `json:"firstname" bson:"firstname"`
 	LastName  string `json:"lastname" bson:"lastname"`
 	Email     string `json:"email" bson:"email"`
 	Password  string `json:"password" bson:"password"`
 }
 
-type Employee struct {
+type User struct {
 	ID     int      `json:"id"`
 	Title  string   `json:"title"`
 	Amount int      `json:"amount"`
