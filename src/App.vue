@@ -55,7 +55,7 @@ p::selection {
 
 .login-box {
     position: absolute;
-    top: 25%; 
+    top: 15%; 
     Left: 37%;
     width: 400px;
     padding: 40px; 
