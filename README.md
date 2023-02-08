@@ -3,6 +3,7 @@
 </br>
 
 ## ขั้นตอนการ Run project
+- Run command :
 ```
  $ npm run dev
 ```
