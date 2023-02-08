@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"time"
@@ -14,6 +15,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	_ "github.com/lib/pq"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func main() {
@@ -21,31 +23,15 @@ func main() {
 
 	InitDB()
 	e := echo.New()
-	e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
-		if username == "mongodb" || password == "2566" {
-			return true, nil
-		}
-		return false, nil
-	}))
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
 	// login
-	// e.POST("/logins", CreateLoginsAllHandler)
-	// e.GET("/logins", GetLoginsHandler)
-	// e.GET("/logins/:id", GetLoginsIDHandler)
-	// e.PUT("/logins/:id", UpdateAllLoginsHandler)
-	// e.PATCH("/logins/:id", UpdateLoginsHandler)
-	// e.DELETE("/logins/:id", DeleteLoginsHandler)
-
-	// user
-	// e.POST("/users", CreateUsersAllHandler)
-	// e.GET("/users", GetUsersHandler)
-	// e.GET("/users/:id", GetUsersIDHandler)
-	// e.PUT("/users/:id", UpdateAllUsersHandler)
-	// e.PATCH("/users/:id", UpdateUsersHandler)
-	// e.DELETE("/users/:id", DeleteUsersHandler)
+	http.HandleFunc("/logins", loginHandler)
+	http.HandleFunc("/loginauths", loginAuthHandler)
+	http.HandleFunc("/registers", registersHandler)
+	http.HandleFunc("/registerauths", registerauthsHandler)
 
 	log.Fatal(e.Start(":2566"))
 
@@ -56,6 +42,59 @@ func main() {
 	defer cancel()
 	if err := e.Shutdown(ctx); err != nil {
 		e.Logger.Fatal(err)
+	}
+}
+
+func loginHandler(w http.ResponseWriter, r *http.Request) error {
+	start := time.Now()
+	fmt.Println("loginHandler running!!!")
+	time.Sleep(1 * time.Second)
+	fmt.Println("Run Time : ", time.Since(start), "sec")
+	tpl.ExecuteTemplate(w, "/src/main.js", nil)
+}
+
+func loginAuthHandler(w http.ResponseWriter, r *http.Request) error {
+	fmt.Println("loginAuthHandler running!!!")
+	r.ParseForm()
+	username := r.FormValue("username")
+	password := r.FormValue("password")
+	fmt.Println("username:", username, "password:", password)
+	//
+	var login string
+	stmt := 
+	row := db.QueryRow(stmt, username)
+	err := row.Scan(&login)
+	time.Sleep(1 * time.Second)
+	if err != nil {
+		fmt.Println("login from data:", login)
+		tpl.ExecuteTemplate(w, "/src/main.js", "check username and password")
+		return
+	}
+	//
+	err := bcrypt.CompareHashAndPassword([]byte(login), []byte(password))
+	if err == nil {
+		fmt.Fprint(w, "successfully Login")
+		return
+	}
+	fmt.Println("incorrect password")
+	tpl.ExecuteTemplate(w, "/src/main.js", check username and password)
+}
+
+func registersHandler(w http.ResponseWriter, r *http.Request) error {
+	fmt.Println("registersHandler running!!!")
+	time.Sleep(1 * time.Second)
+	if err != nil {
+
+		return
+	}
+}
+
+func registerauthsHandler(w http.ResponseWriter, r *http.Request) error {
+	fmt.Println("registerauthsHandler running!!!")
+	time.Sleep(1 * time.Second)
+	if err != nil {
+
+		return
 	}
 }
 
