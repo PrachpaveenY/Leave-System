@@ -1,5 +1,6 @@
 # Leave-System
-- Tools = GO, MongoDB, Vue.js</br>
+- Tools = GO, MongoDB, Vue.js
+</br>
 
 ## ขั้นตอนการ Run project
 - npm run dev
