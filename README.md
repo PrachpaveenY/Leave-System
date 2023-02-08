@@ -4,9 +4,9 @@
 
 ## ขั้นตอนการ Run project
 - Run command :
-```
- $ npm run dev
-```
+    ```
+    $ npm run dev
+    ```
 </br></br></br></br>
 
 #### รายละเอียด
