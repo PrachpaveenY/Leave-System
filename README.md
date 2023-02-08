@@ -3,7 +3,9 @@
 </br>
 
 ## ขั้นตอนการ Run project
-- npm run dev
+	```
+	$ npm run dev
+	```
 </br></br></br></br>
 
 #### รายละเอียด
