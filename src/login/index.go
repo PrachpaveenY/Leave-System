@@ -20,13 +20,13 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
-		if username == "postgres" || password == "2565" {
+		if username == "postgres" || password == "2566" {
 			return true, nil
 		}
 		return false, nil
 	}))
 
-	log.Fatal(e.Start(":2565"))
+	log.Fatal(e.Start(":2566"))
 
 	shutdown := make(chan os.Signal, 1)
 	signal.Notify(shutdown, os.Interrupt)
@@ -45,7 +45,7 @@ var db *sql.DB
 func InitDB() {
 	var err error
 	// connect to MongoDB
-	db, err := sql.Open("pgx", os.Getenv("DATABASE_URL"))
+	db, err := sql.Open("mongodb", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
@@ -53,7 +53,7 @@ func InitDB() {
 	defer db.Close()
 
 	createTb := `
-	CREATE TABLE IF NOT EXISTS <name> (
+	CREATE TABLE IF NOT EXISTS employee (
 		id SERIAL PRIMARY KEY,
 		title TEXT,
 		amount FLOAT,
