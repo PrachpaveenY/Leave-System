@@ -41,9 +41,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
 * {
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-body {
+html, body {
     background: #131315;
     font-family: 'Nunito Sans', sans-serif;
 }

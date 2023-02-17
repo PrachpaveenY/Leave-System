@@ -1,5 +1,5 @@
 # Leave-System
-- Tools = GO, MongoDB, Vue.js
+- Tools = GO, Vue.js
 </br>
 
 ## ขั้นตอนการ Run project
