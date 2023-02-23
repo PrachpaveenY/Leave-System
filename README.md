@@ -21,6 +21,9 @@
 ## ขั้นตอนการ Run project
 - Run command :
     ```
+    $ npm install
+    ```
+    ```
     $ npm run dev
     ```
 </br></br></br></br>
