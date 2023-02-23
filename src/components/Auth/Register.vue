@@ -1,20 +1,24 @@
 <template>
     <page-card>
-        <h2>Register Leave System</h2>
+        <h2 class="head-register">Register Leave System</h2>
         <form action="">
-            <div class="form-control">
+            <div class="form-register">
                 <label for="fullname">Fullname</label>
                 <input type="text" name="fullname" id="fullname">
             </div>
-            <div class="form-control">
+            <div class="form-register">
                 <label for="email">Email</label>
                 <input type="emal" name="email" id="email">
             </div>
-            <div class="form-control">
+            <div class="form-register">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password">
             </div>
-            <div class="form-control">
+            <div class="form-register">
+                <label for="password2">Confirm-Password</label>
+                <input type="password" name="password2" id="password2">
+            </div>
+            <div class="form-register">
                 <label for="password2">Confirm-Password</label>
                 <input type="password" name="password2" id="password2">
             </div>
@@ -46,7 +50,21 @@ input:focus {
     background-color: #f7ebff;
 }
 
-.form-control {
+.form-register {
     margin: 1rem 0;
+}
+
+.head-register {
+    background-image: linear-gradient(to right, #7abdff, #ff5f5f, #f364a4, #be5cff);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300%;
+    background-position: -100%;
+    animation: animatedText 2s infinite alternate-reverse;
+}
+@keyframes animatedText{
+    to{
+        background-position: 100%;
+    }
 }
 </style>

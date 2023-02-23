@@ -39,6 +39,7 @@ export default {
         }
     },
     computed:{
+        // เซ็ตเป็นค่าว่างเมื่อคลิก
         setLoginActiveTab(){
             return this.selectedTab !== 'login' ? '' : 'default';
         },
