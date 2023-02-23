@@ -1,7 +1,7 @@
 <template>
     <page-card>
-        <page-button >Login</page-button>
-        <page-button>Register</page-button>
+        <page-button>Login</page-button>
+        <page-button mode="default">Register</page-button>
     </page-card>
 </template>
 <script>

@@ -3,6 +3,8 @@
         <TheHeader :title="title"/>
         <div class="container">
             <Navigation />
+            <Login />
+            <Register />
         </div>
     </div>
     
@@ -12,12 +14,16 @@
 <script>
 import TheHeader from './components/layouts/TheHeader.vue';
 import Navigation from './components/Auth/Navigation.vue';
+import Login from './components/Auth/Login.vue';
+import Register from './components/Auth/Register.vue';
 
 export default {
     name : 'App',
     components:{
         Navigation,
         TheHeader,
+        Login,
+        Register,
     },
     data() {
         return {
@@ -37,6 +43,10 @@ export default {
     font-family: 'Nunito Sans', sans-serif;
 }
 
-/* body, html {
-} */
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* body, html {} */
 </style>

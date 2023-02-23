@@ -1,5 +1,5 @@
 <template lang="">
-    <button :mode="mode">
+    <button :class="mode">
         <slot />
     </button>
 </template>
@@ -15,21 +15,21 @@ export default {
     button {
         padding: 0.75rem 1.5rem;
         font-family: inherit;
-        background-color: #03045E;
-        border: 1px solid #03045E;
+        background-color: #03045e;
+        border: 1px solid #03045e;
         color: white;
         cursor: pointer;
     }
 
     button:hover,
     button:active {
-        background-color: #023E8A;
-        border-color: #023E8A;
+        background-color: #023e8a;
+        border-color: #023e8a;
     }
 
     .default {
-        background-color: #03045E;
-        color: #03045E;
+        background-color: transparent;
+        color: #03045e;
         border: none;
     }
 
