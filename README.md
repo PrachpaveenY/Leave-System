@@ -16,7 +16,7 @@
      - Business leave 3 days per year with the right to receive regular wages
      - Sick leave, with the right to take sick leave as much as actually sick and have the right to receive normal wages for not more than 30 working days per year After the 31st day, you will not receive wages or receive wages according to the company's conditions
     ```
-</br></br>
+</br>
 
 ## ขั้นตอนการ Run project
 - Run command :

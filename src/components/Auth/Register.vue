@@ -3,7 +3,7 @@
         <h2>Register Leave System</h2>
         <form action="">
             <div class="form-control">
-                <label for="fullname">Email</label>
+                <label for="fullname">Fullname</label>
                 <input type="text" name="fullname" id="fullname">
             </div>
             <div class="form-control">
