@@ -2,9 +2,11 @@
     <div class="">
         <TheHeader :title="title"/>
         <div class="container">
-            <Navigation />
-            <Login />
-            <Register />
+         <page-card>
+           <page-button @click="switchTab('login')">Login</page-button>
+           <page-button @click="switchTab('register')">Register</page-button>
+         </page-card>
+         <component :is="selectedTab"></component>
         </div>
     </div>
     
@@ -13,23 +15,27 @@
 
 <script>
 import TheHeader from './components/layouts/TheHeader.vue';
-import Navigation from './components/Auth/Navigation.vue';
 import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
 
 export default {
     name : 'App',
     components:{
-        Navigation,
         TheHeader,
         Login,
         Register,
     },
     data() {
         return {
-            title: 'Vue Leave System'
+            title: 'Vue.JS Leave System',
+            selectedTab : Login,
         }
     },
+    methods:{
+        switchTab(tab){
+            this.selectedTab = tab;
+        }
+    }
 }
 
 </script>
